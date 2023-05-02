@@ -16,6 +16,8 @@ def get_users():
     for user in users.values():
         users_list.append(user.to_dict())
     return jsonify(users_list)
+
+
 @app_views.route('/users/<user_id>', strict_slashes=False)
 def get_user(user_id):
     """get a user"""
@@ -66,4 +68,3 @@ def update_user(user_id):
             abort(400, 'Can\'t update')
     user.save()
     return jsonify(user.to_dict()), 200
-
