@@ -7,12 +7,12 @@ import requests
 if __name__ == "__main__":
     """ Get one user
     """
-    r = requests.get("http://0.0.0.0:5000/api/v1/users")
+    r = requests.get("http://0.0.0.0:5000/api/v1/users", timeout=60)
     r_j = r.json()
     user_id = r_j[0].get('id')
 
     """ PUT /api/v1/users/<user_id>
     """
-    r = requests.put("http://0.0.0.0:5000/api/v1/users/{}".format(user_id), data={ 'first_name': "NewFirstName" }, headers={ 'Content-Type': "application/json" })
+    r = requests.put("http://0.0.0.0:5000/api/v1/users/{}".format(user_id), data={ 'first_name': "NewFirstName" }, headers={ 'Content-Type': "application/json" }, timeout=60)
     print(r.status_code)
     print(r.content)    
